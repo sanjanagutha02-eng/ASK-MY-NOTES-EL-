@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskMyNotes</title>v
+</head>
+
+<body>
+
+    <header>
+        <h1>AskMyNotes</h1>
+        <p>Upload your notes and ask questions from them.</p>
+    </header>
+
+    <main>
+
+        <!-- Upload Notes Section -->
+        <section>
+
+            <h2>Upload Notes</h2>
+
+            <form action="#" method="post" enctype="multipart/form-data">
+
+                <label for="notes">
+                    Choose your notes file:
+                </label>
+
+                <input
+                    type="file"
+                    id="notes"
+                    name="notes"
+                    accept=".pdf,.txt,.doc,.docx"
+                >
+
+            </form>
+
+        </section>
+
+        <hr>
+
+        <!-- Ask Question Section -->
+        <section>
+
+            <h2>Ask a Question</h2>
+
+            <form action="#" method="post">
+
+                <label for="question">
+                    Enter your question:
+                </label>
+
+                <br><br>
+
+                <textarea
+                    id="question"
+                    name="question"
+                    rows="6"
+                    cols="60"
+                    placeholder="Type your question here..."
+                ></textarea>
+
+                <br><br>
+
+                <button type="submit">
+                    Ask My Notes
+                </button>
+
+            </form>
+
+        </section>
+
+        <hr>
+
+        <!-- Answer Section -->
+        <section>
+
+            <h2>Answer</h2>
+
+            <p>
+                Your AI-generated answer will appear here.
+            </p>
+
+            <div id="answer">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            AskMyNotes Capstone Project
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
