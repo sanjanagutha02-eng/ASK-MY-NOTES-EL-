@@ -1,0 +1,38 @@
+<<!DOCTYPE html>
+<html>
+<body>
+
+<div class="container">
+    <!-- Optional: Added the missing heading element so line 134 works -->
+    <h1 id="main-heading">Original Heading Text</h1> 
+    
+    <button onclick="demoGetElementById()">getElementById()</button>
+    <h3>Output:</h3>
+    <div id="output">Click any button to see the result here.</div>
+</div>
+
+<script>
+function showOutput(message) {
+    // FIX: Changed 'InnerText' to 'innerText'
+    document.getElementById("output").innerText = message;
+}
+
+function demoGetElementById() {
+    let heading = document.getElementById("main-heading");
+    
+    // Safety check in case the element doesn't exist
+    if (heading) {
+        heading.style.backgroundColor = "#d1ecf1";
+        heading.style.color = "#0c5460";
+        heading.style.innerText = "Selected using getElementById()"; 
+    }
+    
+    showOutput(
+        "Method: getElementById()\n\n" +
+        "It selects one element..."
+    );
+}
+</script>
+
+</body>
+</html>
