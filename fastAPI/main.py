@@ -10,14 +10,12 @@ app = FastAPI(
 )
 
 
-# React runs on port 5173.
-# FastAPI runs on port 8000.
-# Since these are different origins, CORS permission is required.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://ask-my-notes-el.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
