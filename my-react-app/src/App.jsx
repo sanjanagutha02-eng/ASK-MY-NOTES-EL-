@@ -22,7 +22,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "https://ask-my-notes-7dn.onrender.com/ask",
+        "https://ask-my-notes-1.onrender.com/ask",
         {
           method: "POST",
           headers: {
