@@ -1,11 +1,13 @@
-FROM python:3.11
+FROM node:20
 
 WORKDIR /app
 
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
 
-RUN pip install fastapi uvicorn
+EXPOSE 5173
 
-EXPOSE 8000
-
-CMD ["uvicorn","main:app","--host","0.0.0.0","--port","8000"]
+CMD ["npm", "run", "dev", "--", "--host"]
