@@ -9,6 +9,6 @@ services:
   frontend:
     build: ./my-react-app
     ports:
-      - "5173:5173"
+      - "5173:10000"
     depends_on:
       - backend
