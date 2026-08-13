@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./fastAPI
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./my-react-app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
