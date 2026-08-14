@@ -1,5 +1,5 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import Response
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 
@@ -10,33 +10,19 @@ app = FastAPI(
 )
 
 
-# Manual CORS handling for the Render frontend
-@app.middleware("http")
-async def add_cors_headers(request: Request, call_next):
-    allowed_origin = "https://ask-my-notes-el.onrender.com"
-
-    # Handle browser preflight request
-    if request.method == "OPTIONS":
-        return Response(
-            status_code=200,
-            headers={
-                "Access-Control-Allow-Origin": allowed_origin,
-                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type, Authorization",
-            },
-        )
-
-    response = await call_next(request)
-
-    response.headers["Access-Control-Allow-Origin"] = allowed_origin
-    response.headers["Access-Control-Allow-Methods"] = (
-        "GET, POST, PUT, DELETE, OPTIONS"
-    )
-    response.headers["Access-Control-Allow-Headers"] = (
-        "Content-Type, Authorization"
-    )
-
-    return response
+# React runs on port 5173.
+# FastAPI runs on port 8000.
+# Since these are different origins, CORS permission is required.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class QuestionRequest(BaseModel):
@@ -58,7 +44,7 @@ def home():
 @app.get("/health")
 def health_check():
     return {
-        "status": "NEW-CODE-7959645"
+        "status": "healthy"
     }
 
 

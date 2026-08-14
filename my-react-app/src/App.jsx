@@ -21,17 +21,17 @@ function App() {
     setAnswer("");
 
     try {
-      const response = await fetch(
-"https://ask-my-notes-el-1.onrender.com/ask",        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            question: cleanedQuestion,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:8000/ask", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          question: cleanedQuestion,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error(`Backend returned status ${response.status}`);
@@ -44,7 +44,7 @@ function App() {
       console.error(err);
 
       setError(
-        "Unable to connect to the backend. Please try again."
+        "Unable to connect to the backend. Check whether the FastAPI container is running."
       );
     } finally {
       setLoading(false);
