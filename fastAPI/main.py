@@ -16,6 +16,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "https://ask-my-notes-el.onrender.com",
+        "https://ask-my-notes-el-1.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
