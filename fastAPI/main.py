@@ -58,7 +58,7 @@ def home():
 @app.get("/health")
 def health_check():
     return {
-        "status": "healthy"
+        "status": "NEW-CODE-7959645"
     }
 
 
